@@ -17,7 +17,7 @@ def check_for_updates():
         remote_version = r.content.decode('utf-8').strip()
         local_version = open('uptodate.txt', 'r').read().strip()
         if remote_version != local_version:
-            print("A updated version of the bot is available. You can download the update here: https://github.com/fluidmain/Twitch-Viewer-Bot")
+            print("An updated version of the bot is available. You can download the update here: https://github.com/fluidmain/Twitch-Viewer-Bot")
             time.sleep(3)
             return False
         return True
@@ -54,45 +54,14 @@ def main():
     print(Colors.orange, Center.XCenter("╰┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅╯"))
     print("")
 
-    # Proxy URLS
-    proxy_servers = {
-        1: "https://www.blockaway.net",
-        2: "https://www.croxy.network",
-        3: "https://www.croxy.org",
-        4: "https://www.youtubeunblocked.live",
-        5: "https://www.croxyproxy.net",
-    }
+    # Pre-configured proxy server
+    proxy_url = "https://www.blockaway.net"  # Change this to your preferred proxy server
 
-    # Selecting proxy server
-    print(Colors.orange, Center.XCenter("╔════════════════════════════════════════════════════════════════════════════╗"))
-    print(Colors.red, Center.XCenter("If a server is not reachable, please let me know. I will update it then."))
-    print(Colors.red, Center.XCenter("Select a server. Enter the Servernumber and press Enter."))
-    print(Colorate.Vertical(Colors.green_to_blue,"  "))
-    for i in range(1, 5):
-        print(Colors.cyan, Center.XCenter(f"Server (online) {i}"))
-    print(Colors.orange, Center.XCenter("╚════════════════════════════════════════════════════════════════════════════╝"))
-    proxy_choice = int(input(Colorate.Vertical(Colors.cyan_to_blue, ">>")))
-    proxy_url = proxy_servers.get(proxy_choice)
+    # Pre-configured Twitch username
+    twitch_username = "fluidscripts"  # Change this to the target Twitch username
 
-    # Select Twitch Account
-    print(Colorate.Vertical(Colors.green_to_blue,"  "))
-    print(Colorate.Vertical(Colors.green_to_blue,"  "))
-    print(Colorate.Vertical(Colors.green_to_blue,"  "))
-    print(Colors.orange, Center.XCenter("╔════════════════════════════════════════════════════════════════════════════╗"))
-    print(Colors.cyan, Center.XCenter("Target Twitch account? Please provide only the username!"))
-    print(Colors.cyan, Center.XCenter("Example: fluidscripts"))
-    print(Colors.orange, Center.XCenter("╚════════════════════════════════════════════════════════════════════════════╝"))
-    twitch_username = input(Colorate.Vertical(Colors.cyan_to_blue, ">>"))
-
-    # Select Proxys Amount
-    print(Colorate.Vertical(Colors.green_to_blue,"  "))
-    print(Colorate.Vertical(Colors.green_to_blue,"  "))
-    print(Colorate.Vertical(Colors.green_to_blue,"  "))
-    print(Colors.orange, Center.XCenter("╔════════════════════════════════════════════════════════════════════════════╗"))
-    print(Colors.cyan, Center.XCenter("How many viewers should be sent?"))
-    print(Colors.cyan, Center.XCenter("(Higher numbers may cause bugs!)"))
-    print(Colors.orange, Center.XCenter("╚════════════════════════════════════════════════════════════════════════════╝"))
-    proxy_count = int(input(Colorate.Vertical(Colors.cyan_to_blue, ">>")))
+    # Pre-configured number of viewers
+    proxy_count = 10  # Change this to the desired number of viewers
 
     # Next Step
     os.system("cls")
@@ -155,7 +124,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-# ==========================================
-# Copyright 2023 - fLUIDscripts.
-# ==========================================
