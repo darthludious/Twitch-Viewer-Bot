@@ -45,7 +45,7 @@ def main():
    └  ┴─┘└─┘┴─┴┘└─┘└─┘┴└─┴┴   ┴ └─┘o
   GITHUB: HTTPS://GITHUB.COM/FLUIDMAIN
 """)))
-    print(Colors.orange, Center.XCenter("╰┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅╯"))
+    print(Colors.orange, Center.XCenter("╰┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅╯"))
     announcement = print_announcement()
     print("")
     print(Colors.orange, Center.XCenter("╭┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅╮"))
@@ -88,7 +88,7 @@ def main():
     chrome_options.add_argument('--headless')
     chrome_options.add_argument("--mute-audio")
     chrome_options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+    driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=chrome_options)
 
     driver.get(proxy_url)
 
@@ -103,7 +103,7 @@ def main():
 
     # Ende
     os.system("cls")
-    print(Colors.orange, Center.XCenter("╭┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅╮"))
+    print(Colors.orange, Center.XCenter("╭┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅╮"))
     print(Colorate.Vertical(Colors.green_to_cyan, Center.XCenter("""   ┌─┐┬  ┬ ┬┬┌┬┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐┌─┐
    ├┤ │  │ ││ ││└─┐│  ├┬┘│├─┘ │ └─┐
    └  ┴─┘└─┘┴─┴┘└─┘└─┘┴└─┴┴   ┴ └─┘o
