@@ -7,6 +7,7 @@ from colorama import Fore
 from pystyle import Center, Colors, Colorate
 import os
 import time
+from webdriver_manager.chrome import ChromeDriverManager
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
@@ -16,17 +17,13 @@ def check_for_updates():
         remote_version = r.content.decode('utf-8').strip()
         local_version = open('uptodate.txt', 'r').read().strip()
         if remote_version != local_version:
-            print("A updated version of the bot is avaiable. You can download the update here: https://github.com/fluidmain/Twitch-Viewer-Bot")
+            print("A updated version of the bot is available. You can download the update here: https://github.com/fluidmain/Twitch-Viewer-Bot")
             time.sleep(3)
             return False
         return True
     except:
         return True
 
-
-def main():
-    if not check_for_updates():
-        return
 def print_announcement():
     try:
         r = requests.get("https://pastebin.com/raw/1EwXmhbY", headers={"Cache-Control": "no-cache"})
@@ -35,19 +32,16 @@ def print_announcement():
     except:
         print("Bot version check failed. Start manually, but it may not work without the latest version.\n")
 
-
-
 def main():
     if not check_for_updates():
         return
     print_announcement()
-    
 
     os.system(f"title fLUIDscripts. Twitch View Bot 3.1 ")
 
     print(Colors.orange, Center.XCenter("╭┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅╮"))
-    print(Colorate.Vertical(Colors.green_to_cyan, Center.XCenter("""   ┌─┐┬  ┬ ┬┬┌┬┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐┌─┐ 
-   ├┤ │  │ ││ ││└─┐│  ├┬┘│├─┘ │ └─┐ 
+    print(Colorate.Vertical(Colors.green_to_cyan, Center.XCenter("""   ┌─┐┬  ┬ ┬┬┌┬┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐┌─┐
+   ├┤ │  │ ││ ││└─┐│  ├┬┘│├─┘ │ └─┐
    └  ┴─┘└─┘┴─┴┘└─┘└─┘┴└─┴┴   ┴ └─┘o
   GITHUB: HTTPS://GITHUB.COM/FLUIDMAIN
 """)))
@@ -59,7 +53,7 @@ def main():
     print(Colors.yellow, Center.XCenter(f"{announcement}"))
     print(Colors.orange, Center.XCenter("╰┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅╯"))
     print("")
-    
+
     # Proxy URLS
     proxy_servers = {
         1: "https://www.blockaway.net",
@@ -79,7 +73,7 @@ def main():
     print(Colors.orange, Center.XCenter("╚════════════════════════════════════════════════════════════════════════════╝"))
     proxy_choice = int(input(Colorate.Vertical(Colors.cyan_to_blue, ">>")))
     proxy_url = proxy_servers.get(proxy_choice)
-    
+
     # Select Twitch Account
     print(Colorate.Vertical(Colors.green_to_blue,"  "))
     print(Colorate.Vertical(Colors.green_to_blue,"  "))
@@ -89,7 +83,7 @@ def main():
     print(Colors.cyan, Center.XCenter("Example: fluidscripts"))
     print(Colors.orange, Center.XCenter("╚════════════════════════════════════════════════════════════════════════════╝"))
     twitch_username = input(Colorate.Vertical(Colors.cyan_to_blue, ">>"))
-    
+
     # Select Proxys Amount
     print(Colorate.Vertical(Colors.green_to_blue,"  "))
     print(Colorate.Vertical(Colors.green_to_blue,"  "))
@@ -99,12 +93,12 @@ def main():
     print(Colors.cyan, Center.XCenter("(Higher numbers may cause bugs!)"))
     print(Colors.orange, Center.XCenter("╚════════════════════════════════════════════════════════════════════════════╝"))
     proxy_count = int(input(Colorate.Vertical(Colors.cyan_to_blue, ">>")))
-    
+
     # Next Step
     os.system("cls")
     print(Colors.orange, Center.XCenter("╭┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅╮"))
-    print(Colorate.Vertical(Colors.green_to_cyan, Center.XCenter("""   ┌─┐┬  ┬ ┬┬┌┬┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐┌─┐ 
-   ├┤ │  │ ││ ││└─┐│  ├┬┘│├─┘ │ └─┐ 
+    print(Colorate.Vertical(Colors.green_to_cyan, Center.XCenter("""   ┌─┐┬  ┬ ┬┬┌┬┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐┌─┐
+   ├┤ │  │ ││ ││└─┐│  ├┬┘│├─┘ │ └─┐
    └  ┴─┘└─┘┴─┴┘└─┘└─┘┴└─┴┴   ┴ └─┘o
   GITHUB: HTTPS://GITHUB.COM/FLUIDMAIN
 """)))
@@ -117,9 +111,6 @@ def main():
     print(Colors.cyan, Center.XCenter("then restart the bot or change the proxy server."))
     print(Colors.orange, Center.XCenter("╚════════════════════════════════════════════════════════════════════════════╝"))
 
-    chrome_path = r'C:\Program Files\Google\Chrome\Application\chrome.exe'
-    driver_path = 'chromedriver.exe'
-
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
     chrome_options.add_argument('--disable-logging')
@@ -128,8 +119,7 @@ def main():
     chrome_options.add_argument('--headless')
     chrome_options.add_argument("--mute-audio")
     chrome_options.add_argument('--disable-dev-shm-usage')
-    chrome_options.binary_location = chrome_path
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
 
     driver.get(proxy_url)
 
@@ -145,8 +135,8 @@ def main():
     # Ende
     os.system("cls")
     print(Colors.orange, Center.XCenter("╭┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅╮"))
-    print(Colorate.Vertical(Colors.green_to_cyan, Center.XCenter("""   ┌─┐┬  ┬ ┬┬┌┬┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐┌─┐ 
-   ├┤ │  │ ││ ││└─┐│  ├┬┘│├─┘ │ └─┐ 
+    print(Colorate.Vertical(Colors.green_to_cyan, Center.XCenter("""   ┌─┐┬  ┬ ┬┬┌┬┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐┌─┐
+   ├┤ │  │ ││ ││└─┐│  ├┬┘│├─┘ │ └─┐
    └  ┴─┘└─┘┴─┴┘└─┘└─┘┴└─┴┴   ┴ └─┘o
   GITHUB: HTTPS://GITHUB.COM/FLUIDMAIN
 """)))
@@ -162,7 +152,6 @@ def main():
     print(Colors.orange, Center.XCenter("╚════════════════════════════════════════════════════════════════════════════╝"))
     input(Colorate.Vertical(Colors.cyan_to_blue, ">>"))
     driver.quit()
-
 
 if __name__ == '__main__':
     main()
